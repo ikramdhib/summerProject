@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategorieController;
 use App\Http\Controllers\Api\SousCategorieController;
+use App\Http\Controllers\Api\SousSousCategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,11 @@ Route::post('/updateSousCatg/{id}', [SousCategorieController::class , 'update'])
 Route::delete('/deleteSousCatg/{id}',[SousCategorieController::class,'destroy']);
 Route::get('/sousCategories',[SousCategorieController::class, 'displayAll']);
 Route::get('/SousCategorie/{id}',[SousCategorieController::class,'displayOne']);
+
+
+//SousSousCategories CRUD
+Route::post('/addSousSousCatg',[SousSousCategoriesController::class, 'add']);
+Route::post('/updateSousSousCatg/{id}', [SousSousCategoriesController::class , 'update']);
+Route::delete('/deleteSousSousCatg/{id}',[SousSousCategoriesController::class,'destroy']);
+Route::get('/sousSousCategories',[SousSousCategoriesController::class, 'displayAll']);
+Route::get('/sousSousCategorie/{id}',[SousSousCategoriesController::class,'displayOne']);

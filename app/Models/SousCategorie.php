@@ -14,4 +14,7 @@ class SousCategorie extends Model
     public function Categorie(){
         return $this->belongsTo(Categorie::class);
     }
+    public function SousCategories(){
+        return $this->hasMany(SousSousCategorie::class);
+    }
 }
