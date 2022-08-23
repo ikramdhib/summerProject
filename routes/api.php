@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CategorieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,8 @@ use App\Http\Controllers\Api\AuthController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+ 
+//user login , registerd nd logout 
 Route::group([
     'middleware'=>'api',
     'prefix'=>'user'
@@ -27,3 +29,8 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 }
 );
+
+
+//Categorie CRUD
+Route::post('/addCatg',[CategorieController::class, 'add']);
+Route::post('/updateCatg/{id}', [CategorieController::class , 'update']);
