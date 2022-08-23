@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategorieController;
 use App\Http\Controllers\Api\SousCategorieController;
 use App\Http\Controllers\Api\SousSousCategoriesController;
+use App\Http\Controllers\Api\VoitureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +55,10 @@ Route::post('/updateSousSousCatg/{id}', [SousSousCategoriesController::class , '
 Route::delete('/deleteSousSousCatg/{id}',[SousSousCategoriesController::class,'destroy']);
 Route::get('/sousSousCategories',[SousSousCategoriesController::class, 'displayAll']);
 Route::get('/sousSousCategorie/{id}',[SousSousCategoriesController::class,'displayOne']);
+
+
+//Voiture CRUD
+Route::post('/addVoiture',[VoitureController::class, 'add']);
+Route::delete('/deleteVoiture/{id}',[VoitureController::class , 'delete']);
+Route::get('/voitures',[VoitureController::class, 'displayAll']);
+Route::get('/voiture/{id}',[VoitureController::class, 'displayOne']);

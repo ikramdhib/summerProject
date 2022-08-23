@@ -48,7 +48,7 @@ class SousSousCategoriesController extends Controller
         $isUpdated=$catg->update($data);
         return response()->json([
             "update"=>$isUpdated,
-            'room'=>$catg
+            'categorie'=>$catg
         ]);
     }
 
