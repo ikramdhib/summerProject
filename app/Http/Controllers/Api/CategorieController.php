@@ -10,7 +10,7 @@ class CategorieController extends Controller
 {
     public function __construct()
     {
-    $this->middleware('auth:api', ['except' =>['update', 'add','displayAll' , 'displayOne'
+    $this->middleware('auth:api', ['except' =>['displayAll' , 'displayOne'
     ]]);
     }
 
@@ -48,6 +48,30 @@ class CategorieController extends Controller
         return response()->json([
             "update"=>$isUpdated,
             'room'=>$catg
+        ]);
+    }
+
+    public function destroy ($id){
+        $catg= Categorie::find($id);
+      $isDeleted=  $catg->delete();
+      return response()->json([
+          "deleted"=>$isDeleted
+      ]);
+    }
+
+
+    public function displayAll(){
+        $catgs=Categorie::all();
+        return response()->json([
+            'categories'=>$catgs
+        ]);
+    }
+
+
+    public function displayOne($id){
+        $catg=Categorie::find($id);
+        return response()->json([
+            "categorie"=>$catg
         ]);
     }
 

@@ -34,3 +34,6 @@ Route::post('/logout', [AuthController::class, 'logout']);
 //Categorie CRUD
 Route::post('/addCatg',[CategorieController::class, 'add']);
 Route::post('/updateCatg/{id}', [CategorieController::class , 'update']);
+Route::delete('/deleteCatg/{id}',[CategorieController::class,'destroy']);
+Route::get('/categories',[CategorieController::class, 'displayAll']);
+Route::get('/categorie/{id}',[CategorieController::class,'displayOne']);
