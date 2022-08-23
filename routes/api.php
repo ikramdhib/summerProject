@@ -23,5 +23,7 @@ function ($router){
 Route::post('/login',[AuthController::class,  'login']);
 Route::post('/register',[AuthController::class , 'register']);
 Route::get('/profile',[AuthController::class , 'userProfile']);
+Route::post('/logout', [AuthController::class, 'logout']);
+
 }
 );
