@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categorie extends Model
+class SousCategorie extends Model
 {
     protected $fillable=[
-        'path', 'photo' , 'nom'
+        'path', 'photo' , 'nom', 'categorie_id'
     ];
 
-
-    public function SousCategories(){
-        return $this->hasMany(SousCategorie::class);
+    public function Categorie(){
+        return $this->belongsTo(Categorie::class);
     }
 }
