@@ -25,14 +25,14 @@ class AuthController extends Controller
      */
     public function login(Request $request){
     	$validator = Validator::make($request->all(), [
-            'adresse' => 'required|email',
-            'mdp' => 'required|string|min:6',
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
         ]);
         if ($validator->fails()) {
-            return response()->json($validator->errors());
+            return response()->json($validator->errors(), 422);
         }
         if (! $token = auth()->attempt($validator->validated())) {
-            return response()->json(['error' => 'Unauthorized']);
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
         return $this->createNewToken($token);
     }
@@ -43,8 +43,8 @@ class AuthController extends Controller
      */
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
-            'adresse' => 'required|email',
-            'mdp' => 'required|string|min:6',
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
             'nom' =>'required|string',
             'tel' => 'required|string'
         ]);
@@ -53,7 +53,7 @@ class AuthController extends Controller
         }
         $user = User::create(array_merge(
                     $validator->validated(),
-                    ['mdp' => bcrypt($request->mdp)]
+                    ['password' => bcrypt($request->password)]
                 ));
         return response()->json([
             'message' => 'User successfully registered',
