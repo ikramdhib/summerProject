@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\AviController;
 use App\Http\Controllers\Api\CategorieController;
 use App\Http\Controllers\Api\CommandeController;
 use App\Http\Controllers\Api\FactureController;
@@ -85,3 +86,10 @@ Route::post('/updatePiece',[PieceController::class,'update']);
 Route::delete('/deletePiece/{id}',[PieceController::class , 'delete']);
 Route::get('/pieces',[PieceController::class, 'displayAll']);
 Route::get('/piece/{id}',[PieceController::class, 'displayOne']);
+
+
+//Avis CRUD
+Route::post('/addAvis',[AviController::class, 'add']);
+Route::delete('/deleteAvis/{id}',[AviController::class , 'delete']);
+Route::get('/avis',[AviController::class, 'displayAll']);
+Route::get('/avi/{id}',[AviController::class, 'displayOne']);

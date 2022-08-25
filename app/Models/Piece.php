@@ -14,4 +14,8 @@ class Piece extends Model
     public function pieceable(){
         return $this->morphTo();
     }
+
+    public function Avis(){
+        return $this->hasMany(Avi::class);
+    }
 }

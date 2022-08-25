@@ -64,4 +64,7 @@ class User extends Authenticatable implements JWTSubject
     public function Commandes(){
         return $this->hasOne(Commande::class);
     }
+    public function Avi(){
+        return $this->hasOne(Avi::class);
+    }
 }
