@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategorieController;
+use App\Http\Controllers\Api\FactureController;
 use App\Http\Controllers\Api\SousCategorieController;
 use App\Http\Controllers\Api\SousSousCategoriesController;
 use App\Http\Controllers\Api\VoitureController;
@@ -62,3 +63,10 @@ Route::post('/addVoiture',[VoitureController::class, 'add']);
 Route::delete('/deleteVoiture/{id}',[VoitureController::class , 'delete']);
 Route::get('/voitures',[VoitureController::class, 'displayAll']);
 Route::get('/voiture/{id}',[VoitureController::class, 'displayOne']);
+
+
+//Facture CRUD
+Route::post('/addFacture',[FactureController::class, 'add']);
+Route::delete('/deleteFacture/{id}',[FactureController::class , 'delete']);
+Route::get('/factures',[FactureController::class, 'displayAll']);
+Route::get('/facture/{id}',[FactureController::class, 'displayOne']);
