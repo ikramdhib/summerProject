@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Facture;
+use App\Models\Commande;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class FactureController extends Controller
+class CommandeController extends Controller
 {
     public function __construct()
     {
@@ -20,17 +20,22 @@ class FactureController extends Controller
         $user=User::find($request->user_id);
         if($user->role=='USER'){
         $this->validate($request,[
-            'ref'=>'required',
+            'quantite'=>'required',
+            'totale_prix'=>'required',
+            'etat'=>'required'
         ]);
 
-        $facture=Facture::create([
-            'ref'=>$request->ref,
-            'user_id'=>$request->user_id
+        $commande=Commande::create([
+            'quantite'=>$request->quantite,
+            'totale_prix'=>$request->totale_prix,
+            'etat'=>$request->etat,
+            'user_id'=>$request->user_id,
+            'facture_id'=>$request->facture_id
         ]);
 
         return response()->json([
             'message'=>"success",
-            'facture'=>$facture
+            'commande'=>$commande
         ]);
         }
         else{
@@ -41,8 +46,8 @@ class FactureController extends Controller
     }
 
     public function delete($id){
-        $facture=Facture::find($id);
-        $isDeleted=$facture->delete();
+        $commande=Commande::find($id);
+        $isDeleted=$commande->delete();
 
         return response()->json([
             'isDeleted'=>$isDeleted
@@ -50,21 +55,19 @@ class FactureController extends Controller
     }
 
     public function displayAll(){
-        $factures=Facture::all();
+        $commandes=Commande::all();
         return response()->json([
-            'factures'=>$factures
+            'commandes'=>$commandes
         ]);
     }
     
 
     public function displayOne($id){
-        $facture=Facture::find($id);
+        $commande=Commande::find($id);
         return response()->json([
-            'facture'=>$facture
+            'commandes'=>$commande
         ]);
     }
 
-    public function Commandes(){
-        return $this->morphMany(Commande::class , "commandeable");
-    }
+  
 }

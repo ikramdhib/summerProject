@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategorieController;
+use App\Http\Controllers\Api\CommandeController;
 use App\Http\Controllers\Api\FactureController;
 use App\Http\Controllers\Api\SousCategorieController;
 use App\Http\Controllers\Api\SousSousCategoriesController;
@@ -70,3 +71,9 @@ Route::post('/addFacture',[FactureController::class, 'add']);
 Route::delete('/deleteFacture/{id}',[FactureController::class , 'delete']);
 Route::get('/factures',[FactureController::class, 'displayAll']);
 Route::get('/facture/{id}',[FactureController::class, 'displayOne']);
+
+//Commannde CRUD
+Route::post('/addCommande',[CommandeController::class, 'add']);
+Route::delete('/deleteCommande/{id}',[CommandeController::class , 'delete']);
+Route::get('/commandes',[CommandeController::class, 'displayAll']);
+Route::get('/commande/{id}',[CommandeController::class, 'displayOne']);
