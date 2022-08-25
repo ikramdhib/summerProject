@@ -17,4 +17,7 @@ class SousCategorie extends Model
     public function SousCategories(){
         return $this->hasMany(SousSousCategorie::class);
     }
+    public function Pieces(){
+        return $this->morphMany(Piece::class,'pieceable');
+    }
 }

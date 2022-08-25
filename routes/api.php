@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategorieController;
 use App\Http\Controllers\Api\CommandeController;
 use App\Http\Controllers\Api\FactureController;
+use App\Http\Controllers\Api\PieceController;
 use App\Http\Controllers\Api\SousCategorieController;
 use App\Http\Controllers\Api\SousSousCategoriesController;
 use App\Http\Controllers\Api\VoitureController;
@@ -77,3 +78,10 @@ Route::post('/addCommande',[CommandeController::class, 'add']);
 Route::delete('/deleteCommande/{id}',[CommandeController::class , 'delete']);
 Route::get('/commandes',[CommandeController::class, 'displayAll']);
 Route::get('/commande/{id}',[CommandeController::class, 'displayOne']);
+
+//piece CRUD
+Route::post('/addPiece',[PieceController::class,'add']);
+Route::post('/updatePiece',[PieceController::class,'update']);
+Route::delete('/deletePiece/{id}',[PieceController::class , 'delete']);
+Route::get('/pieces',[PieceController::class, 'displayAll']);
+Route::get('/piece/{id}',[PieceController::class, 'displayOne']);

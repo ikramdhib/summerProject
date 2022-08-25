@@ -17,4 +17,9 @@ class Commande extends Model
    public function Factures(){
     return $this->hasMany(Facture::class);
 }
+
+public function Pieces(){
+    return $this->morphMany(Piece::class,'pieceable');
+}
+
 }
