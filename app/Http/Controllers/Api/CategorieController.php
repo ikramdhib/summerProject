@@ -82,10 +82,16 @@ class CategorieController extends Controller
 
         foreach ($catgs as $catg) {
             $sous_catg = $catg->SousCategories;
+            $catg->pieces;
 
             foreach ($sous_catg as $sctag) {
-                $sctag->SousSousCategories;
+              $s_sCatg=  $sctag->SousSousCategories;
+                $sctag->pieces;
+                foreach ($s_sCatg as $s) {
+                 $s->pieces;
+                  }
             }
+           
         }
 
         return response()->json([

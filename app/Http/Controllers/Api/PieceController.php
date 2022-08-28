@@ -56,7 +56,7 @@ class PieceController extends Controller
             $sous_catg=SousCategorie::find($request->sous_categorie_id);
             $sous_catg->pieces()->save($piece);
         }
-        else if($request->souss_sous_categorie_id){
+        else if($request->sous_sous_categorie_id){
             $sous_sous_catg=SousSousCategorie::find($request->sous_sous_categorie_id);
             $sous_sous_catg->pieces()->save($piece);
         }
