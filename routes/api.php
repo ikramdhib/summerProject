@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\PieceController;
 use App\Http\Controllers\Api\SousCategorieController;
 use App\Http\Controllers\Api\SousSousCategoriesController;
 use App\Http\Controllers\Api\VoitureController;
+use App\Models\Categorie;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,3 +94,8 @@ Route::post('/addAvis',[AviController::class, 'add']);
 Route::delete('/deleteAvis/{id}',[AviController::class , 'delete']);
 Route::get('/avis',[AviController::class, 'displayAll']);
 Route::get('/avi/{id}',[AviController::class, 'displayOne']);
+
+
+
+//get all Categories & sousCattegorie & sousSoousCatg
+Route::get('/getAllCatg', [CategorieController::class, 'getAllCatg']);

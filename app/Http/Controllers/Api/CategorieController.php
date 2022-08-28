@@ -10,7 +10,8 @@ class CategorieController extends Controller
 {
     public function __construct()
     {
-    $this->middleware('auth:api', ['except' =>['displayAll' , 'displayOne'
+    $this->middleware('auth:api', ['except' =>['displayAll' , 'displayOne',
+    'getAllCatg'
     ]]);
     }
 
@@ -72,6 +73,23 @@ class CategorieController extends Controller
         $catg=Categorie::find($id);
         return response()->json([
             "categorie"=>$catg
+        ]);
+    }
+
+
+    public function getAllCatg(){
+        $catgs= Categorie::all();
+
+        foreach ($catgs as $catg) {
+            $sous_catg = $catg->SousCategories;
+
+            foreach ($sous_catg as $sctag) {
+                $sctag->SousSousCategories;
+            }
+        }
+
+        return response()->json([
+            "all_of_Catg"=>$catgs,
         ]);
     }
 
